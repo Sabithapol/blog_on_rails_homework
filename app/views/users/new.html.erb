@@ -1,0 +1,18 @@
+<% if @post.errors.present? %>
+    <p>
+        <%= @post.errors.full_messages.join(', ') %>
+    </p>
+<% end %>
+
+<%= form_with model: @user, local: true do |f| %>
+    <div>
+        <%= f.label :fullname %>
+        <%= f.text_field :fullname %>
+      
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    </div>
+
+        <%= f.submit %>
+    </div>
+<% end %>

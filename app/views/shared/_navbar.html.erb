@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+<a class="navbar-brand" href="#">Blog On Rails</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav mr-auto">
+
+</ul>
+<ul class="navbar-nav navigation-links">
+    <li class="nav-item nav-links">
+        <%= link_to 'Home', root_path %>
+    </li>
+    
+      <% if user_signed_in? %>
+          <li class="nav-item nav-links">
+              <%= link_to 'New Post', new_post_path %>
+          </li>
+          <li class="nav-item nav-links">
+              <%= link_to 'All Posts', posts_path %>
+          </li>
+        
+          <li class="nav-item nav-links">
+              <a><%= current_user.full_name %></a>
+          </li>
+          <li class="nav-item nav-links">
+              <%= link_to "Log Out", session_path, method: :delete, class: 'btn btn-danger' %>
+          </li>
+      <% else %>
+          <li class="nav-item nav-links">
+            <%= link_to "Sign In", new_session_path %>
+          </li>
+          <li class="nav-item nav-links">
+          <%= link_to "Sign Up", new_user_path %>
+        </li>
+      <% end %>
+</ul>
+</div>
+</nav>
+<div class="container">
