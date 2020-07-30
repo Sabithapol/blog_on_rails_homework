@@ -1,18 +1,36 @@
-<% if @post.errors.present? %>
+<h1>User New Page</h1>
+<% if @user.errors.present? %>
     <p>
-        <%= @post.errors.full_messages.join(', ') %>
+        <%= @user.errors.full_messages.join(', ') %>
     </p>
 <% end %>
 
-<%= form_with model: @user, local: true do |f| %>
-    <div>
-        <%= f.label :fullname %>
-        <%= f.text_field :fullname %>
-      
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-    </div>
+<div class="shadow-sm p-3 mb-5 bg-white rounded">
+    <%= form_with model: @user, local: true do |f| %>
+        <div class="form-group">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, class: 'form-control' %>
+        </div>
 
-        <%= f.submit %>
-    </div>
-<% end %>
+        <div class="form-group">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+
+        <%= f.submit 'Create User', class: 'btn btn-primary' %>
+    <% end %>
